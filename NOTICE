@@ -1,0 +1,12 @@
+dsh-mode-intro-card includes derivative work from dsh-liangshen at commit
+955e42a013ff77a5f9394766f75b2646633e26f7:
+https://github.com/zhu1090093659/dsh-web/tree/955e42a013ff77a5f9394766f75b2646633e26f7/packages/dsh-liangshen
+
+dsh-liangshen is licensed under Apache-2.0. The bundled superfatfish
+tool-bootstrap.mjs and custom-bash.mjs match that pinned upstream version.
+Its preset NOTICE attributes the underlying anchored implementation to
+xiaobright/dsh-anchored-standard under MIT.
+
+The mypersona and superfatfish compositions are also based on DeepSeek
+Harness Standard, Minimal, and PTC preset compositions under MIT. See
+presets/superfatfish/NOTICE for the component-level attribution.
