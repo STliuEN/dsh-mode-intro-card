@@ -1,0 +1,29 @@
+{
+  "name": "dsh-mode-intro-card",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "肥鱼家族开场卡 bundle：对 超级蓝色大肥鱼模式（superfatfish）与 蓝色大肥鱼模式（mypersona）的会话在 composer 上方渲染 DeepSeek 娘 出场卡。纯 client UI，零 wire 改动（首轮锚点字节级不动）。可拔插：随 bundle 安装/市场开关启停，卸载即整体移除，不触碰任何现有文件。",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml"
+  ]
+}

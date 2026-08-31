@@ -1,0 +1,9 @@
+# dsh-mode-intro-card bundle patch: inserts the dual-face plugin row into the
+# web profile roster. The node half (exports ".") is a marker row; the
+# `dsh.client` declaration in package.json makes the browser half (exports
+# "./client") load in the web GUI. Remove the package from the profile's
+# dsh.profile.bundles (or market-toggle this row) to disable the card — nothing
+# else is touched (no wire changes, no preset files).
+- insert:
+    - id: mode-intro-card
+      name: 'dsh-mode-intro-card'
