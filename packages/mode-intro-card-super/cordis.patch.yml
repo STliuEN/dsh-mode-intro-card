@@ -1,0 +1,9 @@
+# dsh-mode-intro-card-super bundle patch.
+#
+# The preset itself lives beside its composition in
+# `presets/superfatfish/preset.patch.yml`, listed after this file in the
+# manifest's `dsh.bundle.patch` array. This file therefore only mounts the
+# bundle's own row.
+- insert:
+    - id: mode-intro-card-super
+      name: 'dsh-mode-intro-card-super'

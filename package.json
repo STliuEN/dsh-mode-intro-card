@@ -1,54 +1,13 @@
 {
-  "name": "dsh-mode-intro-card",
-  "version": "0.4.0",
+  "name": "dsh-mode-intro-card-workspace",
+  "version": "0.5.0",
   "private": true,
-  "type": "module",
-  "description": "DeepSeek Harness 肥鱼模式 bundle：注册蓝色大肥鱼 preset，并在 Web 中显示模式开场卡。零依赖、零构建步骤；preset 组合写在 presets/mypersona/preset.patch.yml。",
-  "engines": {
-    "node": "^22.19.0 || >=24.0.0"
-  },
-  "main": "lib/index.js",
-  "exports": {
-    ".": {
-      "default": "./lib/index.js"
-    },
-    "./client": {
-      "default": "./lib/client.js"
-    },
-    "./presets/*": "./presets/*",
-    "./package.json": "./package.json"
-  },
-  "dsh": {
-    "engines": {
-      "dsh": ">=0.1.2-alpha.1"
-    },
-    "bundle": {
-      "patch": [
-        "./cordis.patch.yml",
-        "./presets/mypersona/preset.patch.yml"
-      ]
-    },
-    "client": {
-      "inject": [
-        "@deepseek-ai/dsh-client-ui-conversation",
-        "@deepseek-ai/dsh-client-ui-chat"
-      ],
-      "platform": "web"
-    }
-  },
-  "peerDependencies": {
-    "react": "^18.2.0"
-  },
-  "files": [
-    "lib",
-    "presets",
-    "cordis.patch.yml",
-    "README.md",
-    "LICENSE",
-    "NOTICE"
+  "description": "DeepSeek Harness 肥鱼模式插件：两个可独立安装的 bundle（蓝色大肥鱼 / 超级蓝色大肥鱼）。",
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "check": "node --check lib/index.js && node --check lib/client.js && for file in presets/superfatfish/*.mjs; do node --check \"$file\"; done && npm pack --dry-run"
+    "check": "npm --prefix packages/mode-intro-card run check && npm --prefix packages/mode-intro-card-super run check"
   },
   "keywords": [
     "deepseek",

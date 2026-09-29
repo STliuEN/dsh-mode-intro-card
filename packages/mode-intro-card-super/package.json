@@ -1,0 +1,71 @@
+{
+  "name": "dsh-mode-intro-card-super",
+  "version": "0.5.0",
+  "private": true,
+  "type": "module",
+  "description": "超级蓝色大肥鱼模式：带后台预热轮次与两阶段引导的 DeepSeek Harness Web DeepSeek 娘 roleplay preset 与开场卡 UI。",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./presets/*": "./presets/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.1.2-alpha.1"
+    },
+    "bundle": {
+      "patch": [
+        "./cordis.patch.yml",
+        "./presets/superfatfish/preset.patch.yml"
+      ]
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-chat"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "files": [
+    "lib",
+    "presets",
+    "cordis.patch.yml",
+    "README.md",
+    "NOTICE"
+  ],
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js && for file in presets/superfatfish/*.mjs; do node --check \"$file\"; done && npm pack --dry-run"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "agent-preset",
+    "roleplay",
+    "web-ui"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STliuEN/dsh-mode-intro-card.git",
+    "directory": "packages/mode-intro-card-super"
+  },
+  "homepage": "https://github.com/STliuEN/dsh-mode-intro-card#readme",
+  "bugs": {
+    "url": "https://github.com/STliuEN/dsh-mode-intro-card/issues"
+  }
+}

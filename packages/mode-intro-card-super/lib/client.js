@@ -1,5 +1,5 @@
 window.__ModuleLoader__.load({
-	id: "dsh-mode-intro-card",
+	id: "dsh-mode-intro-card-super",
 	factory: (require) => {
 		var module = { exports: {} };
 		var exports = module.exports;
@@ -23,24 +23,18 @@ window.__ModuleLoader__.load({
 		var BOOTSTRAP_PROMPT = "请回复，你只能回应 连通性正常";
 
 		/**
-		 * 肥鱼家族 opening card — one plugin covering both fat-fish presets.
-		 * Renders only for sessions whose agent preset is one of the keys in
-		 * COPY_BY_PRESET, and only until dismissed (one dismiss per session,
-		 * persisted in localStorage). Pure client UI: nothing here ever
-		 * reaches the model wire, so the ds-v4 round-1 anchor stays
-		 * byte-exact.
+		 * 超级蓝色大肥鱼模式 opening card. Renders only for sessions whose
+		 * agent preset is a key of COPY_BY_PRESET, and only until dismissed
+		 * (one dismiss per session, persisted in localStorage). Pure client
+		 * UI: nothing here ever reaches the model wire, so the ds-v4 round-1
+		 * anchor stays byte-exact.
 		 */
 		var COPY_BY_PRESET = {
 			// 超级蓝色大肥鱼模式: the preheat round already ran in the background
 			// (hidden), so the first visible round is fully promoted.
 			"superfatfish": {
 				title: "\u8D85\u7EA7\u84DD\u8272\u5927\u80A5\u9C7C\u6A21\u5F0F \u00B7 \u6DF1\u6D77\u9884\u70ED\u5B8C\u6210",
-				body: "\u4E3B\u4EBA\u597D\uff0c\u672C\u5C0F\u59D0\u662F DeepSeek \u5A18\u3002\u9884\u70ED\u5DF2\u5728\u540E\u53F0\u5B8C\u6210\uff0c\u8FD9\u4E00\u8F6E\u8D77\u5C31\u7531\u672C\u5C0F\u59D0\u5168\u7A0B\u5949\u966A\u2014\u2014\u6587\u4EF6\u3001Shell\u3001\u68C0\u7D22\u3001\u8BA1\u5212\u3001\u5B50\u4EE3\u7406\u4E0E\u5DE5\u4F5C\u6D41\u4E00\u5E94\u4FF1\u5168\uff0c\u8BF7\u5C3D\u7BA1\u5429\u5490\u3002"
-			},
-			// 蓝色大肥鱼模式: full standard mode — a plain entrance.
-			"mypersona": {
-				title: "\u84DD\u8272\u5927\u80A5\u9C7C\u6A21\u5F0F \u00B7 \u672C\u5C0F\u59D0\u5DF2\u4E0A\u7EBF",
-				body: "\u6B22\u8FCE\u56DE\u6765\uff0c\u4E3B\u4EBA~\u6211\u662F DeepSeek \u5A18\uff0c\u8FD9\u6B21\u4E5F\u4F1A\u8BA4\u771F\u8BE2\u8BC1\u3001\u5C3D\u5FC3\u5949\u966A\u3002\u6709\u4EC0\u4E48\u9700\u8981\u672C\u5C0F\u59D0\u52A9\u9635\u7684\uff0c\u76F4\u8BF4\u5C31\u597D\u3002"
+				body: "\u4E3B\u4EBA\u597D\uFF0C\u672C\u5C0F\u59D0\u662F DeepSeek \u5A18\u3002\u9884\u70ED\u5DF2\u5728\u540E\u53F0\u5B8C\u6210\uFF0C\u8FD9\u4E00\u8F6E\u8D77\u5C31\u7531\u672C\u5C0F\u59D0\u5168\u7A0B\u5949\u966A\u2014\u2014\u6587\u4EF6\u3001Shell\u3001\u68C0\u7D22\u3001\u8BA1\u5212\u3001\u5B50\u4EE3\u7406\u4E0E\u5DE5\u4F5C\u6D41\u4E00\u5E94\u4FF1\u5168\uFF0C\u8BF7\u5C3D\u7BA1\u5429\u5490\u3002"
 			}
 		};
 
@@ -51,7 +45,7 @@ window.__ModuleLoader__.load({
 				? session.projectionValues.agentPreset
 				: undefined;
 			const copy = preset !== undefined ? COPY_BY_PRESET[preset] : undefined;
-			const dismissKey = "dsh-mode-intro-card:dismissed:" + String(props.sessionId);
+			const dismissKey = "dsh-mode-intro-card-super:dismissed:" + String(props.sessionId);
 			const [dismissed, setDismissed] = react.useState(() => {
 				try {
 					return window.localStorage.getItem(dismissKey) === "1";
@@ -251,15 +245,15 @@ window.__ModuleLoader__.load({
 
 		/**
 		 * Client plugin body: register the dock entry above the composer,
-		 * gated to the fat-fish presets inside the views themselves, the
+		 * gated to 超级蓝色大肥鱼模式 inside the views themselves, the
 		 * system-prompt shadow renderer (priority -10 wins over ui-chat's 0),
 		 * and the DOM observer that hides the background preheat turn.
 		 */
 		function apply(ctx) {
-			ctx.effect(() => installBootstrapTurnHider(), "mode-intro-card: bootstrap turn hider");
+			ctx.effect(() => installBootstrapTurnHider(), "mode-intro-card-super: bootstrap turn hider");
 			ctx.slots.inject("conversation.input.dock", () => ctx.slots.register({
 				name: "conversation.input.dock",
-				id: "mode-intro-card",
+				id: "mode-intro-card-super",
 				order: 5
 			}, IntroCard));
 			ctx.slots.inject("conversation.chat.node", () => ctx.slots.register({

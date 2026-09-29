@@ -1,0 +1,70 @@
+{
+  "name": "dsh-mode-intro-card",
+  "version": "0.5.0",
+  "private": true,
+  "type": "module",
+  "description": "蓝色大肥鱼模式：DeepSeek Harness Web 的 DeepSeek 娘 roleplay preset 与开场卡 UI。",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./presets/*": "./presets/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.1.2-alpha.1"
+    },
+    "bundle": {
+      "patch": [
+        "./cordis.patch.yml",
+        "./presets/mypersona/preset.patch.yml"
+      ]
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-chat"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "files": [
+    "lib",
+    "presets",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js && npm pack --dry-run"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "agent-preset",
+    "roleplay",
+    "web-ui"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STliuEN/dsh-mode-intro-card.git",
+    "directory": "packages/mode-intro-card"
+  },
+  "homepage": "https://github.com/STliuEN/dsh-mode-intro-card#readme",
+  "bugs": {
+    "url": "https://github.com/STliuEN/dsh-mode-intro-card/issues"
+  }
+}
