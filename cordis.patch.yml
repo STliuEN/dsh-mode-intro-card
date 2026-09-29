@@ -1,14 +1,9 @@
-# dsh-mode-intro-card bundle patch: add the package-local preset tree to the
-# roster and insert the dual-face UI plugin row. The preset root exists only
-# while this bundle layer is active; no files are copied into DSH_HOME.
-- id: agent-presets
-  config:
-    default: standard
-    roots:
-      - path: !!js >-
-          process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:path').dirname(process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('dsh-mode-intro-card/package.json')), 'presets')
-        trust: system
-
+# dsh-mode-intro-card bundle patch.
+#
+# The preset itself lives beside its composition in
+# `presets/mypersona/preset.patch.yml`, listed after this file in the manifest's
+# `dsh.bundle.patch` array — the same shape the shipped web-app bundle uses for
+# its own presets. This file therefore only mounts the bundle's own row.
 - insert:
     - id: mode-intro-card
       name: 'dsh-mode-intro-card'
